@@ -224,8 +224,10 @@ cdef class Soundex:
             out[i] = 48
         out[self.size] = 0
 
-        pout = out
-        free(out)
+        try:
+            return out
+        finally:
+            free(out)
 
         return pout
 
